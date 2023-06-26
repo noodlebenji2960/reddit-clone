@@ -1,0 +1,40 @@
+.logo{
+    display: flex;
+    width: 40px;
+    height: 40px;
+    mask-image: url(../../../public/assets/logo.svg);
+    mask-size: 300% 300%;
+    mask-position: center;
+    -webkit-mask-image: url(../../../public/assets/logo.svg);
+    -webkit-mask-size: 300% 300%;
+    -webkit-mask-position: center;
+    background: linear-gradient(60deg, #FF4500, #ffc8c8, #FF4500);
+    background-size: 3000% 100%;
+    position: relative;
+    top: 3px;
+}
+
+.logo:hover{
+    animation: rainbow_animation 2.5s;
+    animation-iteration-count: 1;
+}
+
+@keyframes rainbow_animation{
+    0% {
+        transform: rotateY(0deg);
+        background-position: 0 0;
+    }
+    35%{
+        background-position: 100% 0;
+    }
+    50%{
+        background-position: 0% 0;
+    }
+    80%{
+        background-position: 100% 0;
+    }
+    100% {
+        transform: rotateY(360deg);
+        background-position: 100% 0;
+    }
+}

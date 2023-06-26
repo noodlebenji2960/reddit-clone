@@ -1,0 +1,527 @@
+header{
+    background-color: var(--newCommunityTheme-body);
+    border-bottom: 1px solid var(--newCommunityTheme-line);
+    align-items: center;
+    display: flex;
+    box-sizing: border-box;
+    flex-grow: 1;
+    padding: 0 15px 0 20px;
+    height: 50px;
+    width: 100vw;
+    user-select: none;
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+}
+
+header div{
+    display: inline-flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+header > div{
+    gap: 20px;
+}
+
+header svg{
+    height: 20px;
+    width: 20px;
+    pointer-events: none;
+}
+
+header button{
+    background: none;
+}
+
+header button:hover{
+    background-color: var(--newCommunityTheme-line);
+    cursor: pointer;
+}
+
+header > button{
+    display: flex;
+    margin-right: 10px;
+}
+
+header > button:hover{
+    background: none;
+}
+
+#search-container{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px;
+}
+
+#search-container form{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#header-search-bar{
+    box-sizing: border-box;
+    background-color: var(--newRedditTheme-field);
+    border: 1px solid var(--newRedditTheme-line);
+    border-radius: 1.25em;
+    box-shadow: none;
+    height: 40px;
+    width: 100%;
+    padding: 0px 45px;
+    font-size: 16px;
+    user-select: auto;
+}
+
+#header-search-bar:focus, #header-search-bar.focused{
+    outline: 0;
+    background-color: var(--newRedditTheme-body);
+    border: 1px solid var(--newRedditTheme-button);
+    border-bottom: none;
+    border-radius: 1.25em 1.25em 0 0;
+}
+#header-search-bar+button{
+    display: none;
+}
+
+#header-search-bar:focus+button{
+    display: flex;
+} 
+
+header label[for="header-search-bar"] svg{
+    position: absolute;
+    top: 25%;
+    left:15px;
+    z-index: 1;
+    height: 20px;
+    width: 20px;
+}
+
+#search-container button{
+    position: absolute;
+    right: 10px;
+}
+
+header div[role="menu"]{
+    display: none;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: baseline;
+    background-color: var(--newRedditTheme-body);
+    border: 1px solid var(--newRedditTheme-line);
+    border-top: 0px;
+    border-radius: 0 0 4px 4px;
+    box-sizing: border-box;
+    color: var(--newRedditTheme-bodyText);
+    margin: 0px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    width: 275px;
+    height: 75vh;
+    min-height: 250px;
+    top: 45px;
+    white-space: nowrap;
+    box-shadow: 2px 5px 10px -8px var(--newCommunityTheme-bodyTextAlpha20);
+    font-size: 0.9rem;
+}
+
+#mainNav div[role="menu"], #coinDropdown div[role=menu], #userDropdown div[role="menu"]{
+    position: absolute;
+    top: 49px;
+    left: 69px;
+}
+
+#search-container div[role="menu"]{
+    top: 40px;
+    border: 1px solid var(--newRedditTheme-button);
+    border-top: none;
+    width: 100%;
+}
+
+#coinDropdown div[role=menu]{
+    left: unset;
+    top:42px;
+    right: 200px;
+    height: min-content;
+    z-index: 99;
+    clip-path: polygon(0% 1%, 72% 1%, 75% 0%, 78% 1%, 100% 1%, 100% 100%, 0% 100%);
+}
+
+#userDropdown div[role="menu"]{
+    left: unset;
+    right: 14px;
+}
+
+#mainNav input{
+    background-color: var(--newRedditTheme-field);
+    border: 1px solid var(--newRedditTheme-line);
+    color: var(--newRedditTheme-bodyText);
+    height: 30px;
+    margin: 16px 16px 0;
+    outline: none;
+    padding: 5px 6px;
+    box-sizing: border-box;
+    width: calc(100% - 32px);
+}
+
+#mainNav input:focus, #mainNav input:hover{
+    border: 1px solid var(--newRedditTheme-button);
+}
+
+#mainNav button, #coinDropdown button, #userDropdown button{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    cursor: pointer;
+    height: 40px;
+    border-radius: 0.2rem;
+    padding: 5px 0px;
+    margin: 5px 0px;
+}
+
+#mainNav button:not(:first-of-type), #coinDropdown button:not(:first-of-type), #userDropdown button:not(:first-of-type){
+    padding: 5px;
+    margin: 5px ;
+}
+
+#mainNav button svg, #coinDropdown button svg, #userDropdown button svg{
+    position: relative;
+    top: 5px;
+    height: 20px;
+    width: 20px;
+}
+
+#mainNav button:hover, #userDropdown button:hover{
+    height: 40px;
+    outline: 1px solid var(--newRedditTheme-line);
+}
+
+#coinDropdown button:hover{
+    background-color: var(--newRedditTheme-line);
+}
+
+#mainNav button:focus, #coinDropdown button:focus, #userDropdown button:focus{
+    top: 3px;
+    height: 46px;
+    outline: 1px solid var(--newRedditTheme-line);
+}
+header div[role="menu"] button:has(span) > span{
+pointer-events: none;
+}
+
+#userDropdown div[role="menu"] span:not(button span),
+#mainNav div[role="menu"] span:not(button span){
+    border-top: 1px;
+    border-bottom: 1px;
+    border-color: var(--newRedditTheme-line);
+    border-style: solid;
+    width: 100%;
+    margin-top: -1px;
+}
+
+#userDropdown div[role="menu"] button,
+#mainNav div[role="menu"] button,
+#coinDropdown div[role="menu"] button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    text-indent: 30px;
+}
+
+header div[role="menu"] svg{
+    height: 20px;
+    width: 20px;
+}
+
+header div[role="menu"] div[role="heading"]{
+    color: var(--newRedditTheme-actionIcon);
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 16px;
+    text-transform: uppercase;
+    width: 100%;
+    padding: 10px 5px;
+}
+
+header div[role="menu"] div[role="heading"]:has(svg){
+    text-indent: 15px;
+}
+
+#userDropdown div[role="menu"] button:not(:has(span)),
+#mainNav div[role="menu"] button:not(:has(span)){
+    justify-content: start;
+}
+
+#userDropdown div[role="menu"] button:has(svg):not(:has(span)),
+#mainNav div[role="menu"] button:has(svg):not(:has(span)){
+    text-indent: 15px;
+}
+
+#userDropdown div[role="menu"] button:has(svg) span,
+#mainNav div[role="menu"] button:has(svg) span{
+    display: flex;
+    align-items: center;
+    justify-content: baseline;
+    text-indent: 15px;
+}
+
+#userDropdown div[role="menu"] button:has(svg, span) svg,
+#mainNav div[role="menu"] button:has(svg, span) svg{
+    top: 0;
+}
+
+#userDropdown div[role="menu"] button:has(input),
+#mainNav div[role="menu"] button:has(input){
+    text-indent: 30px;
+}
+
+#userDropdown div[role="menu"] button:hover,
+#mainNav div[role="menu"] button:hover{
+    background-color: var(--newRedditTheme-line);
+}
+
+#coinDropdown div[role="menu"] div:first-of-type{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    white-space: normal;
+    color: white;
+    background: linear-gradient(205deg,#2b5270 4%,#4a86b6 108%);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 20px 40px;
+    box-sizing: border-box;
+    width:100%;
+}
+
+#coinDropdown div[role="menu"] div:first-of-type a{
+    color: white;
+    font-size: 12px;
+    font-weight: 100;
+    margin-top: 10px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#coinDropdown div[role="menu"] div{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    line-height: 100%;
+    width: 90%;
+    padding: 0px 15px;
+}
+
+#coinDropdown div[role="menu"] div:not(:has(span)){
+    margin: 0px 0px 15px 0px;
+
+}
+
+#coinDropdown div[role="menu"] span{
+    display: flex;
+    flex-direction: column;
+}
+
+#coinDropdown div[role="menu"] button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-indent: 0;
+    color: white;
+    background-color: var(--newRedditTheme-button);
+    border-radius: 16px;
+    height: 32px;
+    width: 100px;
+}
+
+#coinDropdown div[role="menu"] button:hover{
+    opacity: 0.9;
+}
+
+#coinDropdown div[role="menu"] div:last-child{
+    margin-bottom: 15px;
+}
+
+#coinDropdown div[role="menu"] div:last-child span i{
+    text-align: left;
+}
+
+#coinDropdown div[role="menu"] div:last-child button{
+    background-color: rgb(221, 189, 55)
+}
+
+#coinDropdown span i{
+    color: var(--newRedditTheme-metaText);
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+    margin: 1px;
+}
+
+.verticalNavDivider{
+    height: 20px;
+    margin: 1px;
+    border-left: 1px solid rgb(0, 0, 0);
+    pointer-events: none;
+}
+
+#mainNav i:first-of-type{
+    padding: 8px;
+    font-weight: 600;
+    margin-right: 150px;
+}
+
+header > div > span:first-of-type{
+    display: inline-flex;
+    align-items: center;
+    flex-grow: 1;
+    gap: 20px;
+}
+
+.user{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.user i{
+    position: relative;
+    left: -15px;
+    font-size: 12px;
+}
+
+.user >i{
+    font-weight: bold;
+    left: -10px;
+}
+
+.user span svg{
+    top: 0 !important;
+    height: 14px !important;
+    width: 14px !important;
+}
+
+.subMenu{
+    display: none;
+    flex-direction: column;
+    width: 95%;
+}
+
+header div[role="menu"] button:has(+.subMenu){
+    justify-content: space-between !important;
+}
+
+header div[role="menu"] button:has(+.subMenu) svg{
+    transition: all ease-in-out 0.3s;
+}
+
+@media only screen and (min-width: 480px) {
+
+}
+@media only screen and (max-width: 768px) {
+    header > div span:first-of-type{
+        display:none
+    }
+}
+@media only screen and (max-width: 994px){
+    #mainNav i:first-of-type{
+        display: none;
+    }
+}
+@media only screen and (min-width: 1063px) {
+    .redditLogoText{
+        display: flex;
+        width: 65px;
+        height: 20px;
+        margin: 8px 0px 0px 5px;
+        mask-image: url(../../../public/assets/logoText.svg);
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        -webkit-mask-position-y: center;
+        -webkit-mask-image: url(../../../public/assets/logoText.svg);
+        -webkit-mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position-y: center;
+        background: #000000;
+    }
+    #mainNav div[role="menu"]{
+        left: 140px;
+    }
+}
+@media only screen and (max-width: 1210px) {
+    .user{
+        display: none;
+    }
+}
+@media only screen and (min-width: 1201px) {
+
+}
+
+/*CUSTOM SLIDER separate!*/
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 21px;
+  }
+  
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.5);
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  }
+  
+  input:checked + .slider {
+    background-color: var(--newRedditTheme-button);
+  }
+  
+  input:focus + .slider {
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.5);
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(19px);
+  }
+  
+
+  .slider.round {
+    border-radius: 20px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
