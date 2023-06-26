@@ -1,15 +1,8 @@
 .App{
     display: grid;
     grid-template-rows: 50px 1fr;
-    height: 100vh;
-    background-color: #DAE0E6;
-}
-
-footer{
-    position: fixed;
-    background-color: rgba(24, 24, 24, 1);
+    height: 100%;
     width: 100%;
-    color: white;
 }
 
 main{
@@ -38,4 +31,23 @@ main{
 .feedRightSide{
     flex: 0 0 312px;
     width: 312px;
+}
+
+@media only screen and (max-width: 640px) {
+    main{
+        padding: 0px;
+    }
+    .feedItem{
+        padding: 0px;
+    }
+}
+@media only screen and (max-width: 768px) {
+}
+@media only screen and (max-width: 994px){
+}
+@media only screen and (max-width: 1063px) {
+}
+@media only screen and (max-width: 1210px) {
+}
+@media only screen and (max-width: 1201px) {
 }

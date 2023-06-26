@@ -1,0 +1,84 @@
+#feedFilter {
+    position: relative;
+    padding: 15px;
+}
+
+#feedFilter>span {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+#feedFilter button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    width: min-content;
+    gap: 5px;
+    font-weight: 600;
+    color: var(--newCommunityTheme-actionIcon);
+    fill: var(--newCommunityTheme-actionIcon);
+    padding: 5px 10px;
+    border-radius: 1.2rem;
+}
+
+#feedFilter button:hover {
+    background: var(--newCommunityTheme-line);
+}
+
+#feedFilter button svg {
+    height: 20px;
+    width: 20px;
+}
+
+#feedFilter > span:last-child{
+    width: min-content;
+}
+
+#feedFilter div[role="menu"]{
+    display: none;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: baseline;
+    background-color: var(--newRedditTheme-body);
+    border: 1px solid var(--newRedditTheme-line);
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: var(--newRedditTheme-bodyText);
+    margin-top: -1px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    width: min-content;
+    height: min-content;
+    top: 50px;
+    white-space: nowrap;
+    box-shadow: 2px 5px 10px -8px var(--newCommunityTheme-bodyTextAlpha20);
+}
+
+#feedFilter > span > button:nth-child(5){
+    fill: var(--newCommunityTheme-button);
+    color: var(--newCommunityTheme-button);
+    background-color: var(--newCommunityTheme-field);
+}
+
+#feedFilter span:first-child > div{
+    left: 350px;
+}
+
+#feedFilter span:last-child > div{
+    right: 0px;
+}
+
+#feedFilter div[role="menu"] button{
+    justify-content: start;
+    border-radius: 0;
+    padding: 5px;
+    width: 100%;
+}
+
+#feedFilter div[role="menu"] svg{
+    height: 20px;
+    width: 20px;
+}

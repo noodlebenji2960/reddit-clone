@@ -1,0 +1,73 @@
+.feedPost{
+    display: flex;
+    gap: 10px;
+    padding: 0;
+    overflow: hidden;
+    user-select: none;
+}
+
+.feedPost:hover{
+    border-color: var(--newRedditTheme-actionItem);
+}
+
+.feedPost > div:first-of-type{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+    background-color: var(--newRedditTheme-line);
+    padding: 10px 5px;
+    font-size: 0.8rem;
+}
+
+.feedPost > div:first-of-type svg{
+    height: 25px;
+    width: 25px;
+}
+
+.feedPost > div:last-of-type{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    gap: 10px;
+    padding: 10px 5px;
+}
+
+.feedPost > div:last-of-type > div:first-of-type{
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+.feedPost > div:last-of-type > div:first-of-type{
+    font-weight: 600;
+}
+
+.feedPost > div:last-of-type > div:first-of-type i{
+    font-weight: 100;
+}
+
+.feedPost > div:last-of-type > div:first-of-type svg{
+    height: 20px;
+    width: 20px;
+}
+
+.feedPost > div:last-of-type > div:last-of-type{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 10px;
+}
+
+.feedPost > div:last-of-type > div:last-of-type button{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 10px;
+    background: none;
+}
+
+.feedPost > div:last-of-type > div:last-of-type button svg{
+    height: 20px;
+    width: 20px;
+}

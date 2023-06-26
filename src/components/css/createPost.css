@@ -98,19 +98,89 @@
 
 #createPost .upper > div{
     display: flex;
+    align-items: center;
     justify-content: space-between;
     margin: auto;
-    line-height: 40px;
-    width: 95%;
+    height: 100%;
+    width: 94%;
     font-weight: 600;
 }
 
-#createPost .upper > div button{
+#createPost .upper > div > div > button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 250px;
+    height: 30px;
+    background: none;
+    border: 1px solid var(--newCommunityTheme-line);
+    white-space: nowrap;
+    padding: 10px;
+  }
+
+  #createPost .upper div[role="menu"]{
+    display: none;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: baseline;
+    background-color: var(--newRedditTheme-body);
+    border: 1px solid var(--newRedditTheme-line);
+    border-top: 0 solid var(--newRedditTheme-line);
+    border-radius: 0 0 4px 4px;
+    box-sizing: border-box;
+    color: var(--newRedditTheme-bodyText);
+    margin-top: -1px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    width: 200px;
+    height: min-content;
+    max-height: 75vh;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+#createPost .upper div[role="menu"] div[role="heading"]{
+    color: var(--newRedditTheme-actionIcon);
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 16px;
+    text-transform: uppercase;
+    width: 100%;
+    padding: 10px 5px;
+}
+
+#createPost .upper div[role="menu"] div[role="heading"]:has(svg){
+    text-indent: 15px;
+}
+
+#createPost .upper div[role="menu"] button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 15px;
+    background:none;
+}
+
+#createPost .upper div[role="menu"] button svg{
+    height: 20px;
+    width: 20px;
+}
+
+#createPost .upper > div > span{
+    display: flex;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+#createPost .upper > div > span > button{
     text-transform:uppercase;
     font-size: 0.8rem;
     background: none;
     color: var(--newCommunityTheme-button);
     fill: var(--newCommunityTheme-button);
+    width: min-content;
 }
 
 #createPost .upper > div button i{
@@ -135,32 +205,6 @@
     width: 95%;
     gap: 10px;
 }
-
-#createPost .post .textEditor{
-    display: flex;
-    flex-direction: column;
-    background-color: var(--newRedditTheme-line);
-    border-radius: 4px;
-}
-
-#createPost .post .textEditor > div{
-    display: flex;
-    gap: 10px;
-}
-
-#createPost .post .textEditor > div button{
-    width: min-content;
-}
-
-#createPost .post .textEditor > div button svg{
-    height: 20px;
-    width: 20px;
-}
-
-#createPost .post .textEditor textarea{
-    resize: vertical;
-}
-
 
 #createPost .lower > span button{
     margin-bottom: 8px;
@@ -256,4 +300,65 @@
     align-items: center;
     justify-content: center;
     width: 95%;
+  }
+
+  .poll{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 95%;
+    gap: 10px;
+  }
+
+  .poll .textEditor{
+    width: 100%;
+  }
+
+  .poll > div:last-of-type{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 30px;
+  }
+
+  .poll > div > span{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .poll span{
+    width: 100%;
+  }
+
+  .poll > div > span input{
+    border: 1px solid var(--newCommunityTheme-line);
+    border-radius: 0.2rem;
+    height: 35px;
+    margin-bottom: 10px;
+  }
+
+  .poll > div > span > span > span{
+    display: flex;
+    align-items: center;
+  }
+
+  .poll > div input[type="text"]{
+    width: 100%;
+  }
+
+  @media only screen and (min-width: 480px) {
+  }
+  @media only screen and (max-width: 768px) {
+  }
+  @media only screen and (max-width: 994px){
+  }
+  @media only screen and (min-width: 1063px) {
+  }
+  @media only screen and (max-width: 1210px) {
+  }
+  @media only screen and (min-width: 1201px) {
   }
