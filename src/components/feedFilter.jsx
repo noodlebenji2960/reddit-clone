@@ -19,10 +19,50 @@ const FeedFilter = () => {
     const [activeButton, setActiveButton] = useState()
     const [topRange, setTopRange] = useState("Today")
     const [view, setView] = useState("Card")
+    const countriesRef = useRef()
     const topRangeRef = useRef()
     const viewRef = useRef()
     const openMenuRef = useRef()
     const menuEnter = useRef(false)
+
+    const countries = [
+        "Everwhere",
+        "United States",
+        "Argentina",
+        "Australia",
+        "Bulgaria",
+        "Canada",
+        "Chile",
+        "Columbia",
+        "Croatia",
+        "Czech Republic",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Iceland",
+        "India",
+        "Ireland",
+        "Italy",
+        "Japan",
+        "Malaysia",
+        "Mexico",
+        "New Zealand",
+        "Philippines",
+        "Poland",
+        "Portugal",
+        "Puerto Rico",
+        "Romania",
+        "Serbia",
+        "Singapore",
+        "Spain",
+        "Sweden",
+        "Taiwan",
+        "Thailand",
+        "Turkey",
+        "United Kingdom",
+    ]
 
     const style = {
         fill: "var(--newCommunityTheme-button)",
@@ -66,62 +106,81 @@ const FeedFilter = () => {
                     <IoRocketOutline />
                     Best
                 </button>
-                <button
-                    onClick={() => setActiveButton("Hot")}
-                    style={activeButton == "Hot" ? style : {}}>
-                    <BsFire />
-                    Hot
-                </button>
+                <span>
+                    <button
+                        onClick={(e) => setActiveButton("Hot")}
+                        style={activeButton == "Hot" ? style : {}}>
+                        <BsFire />
+                        Hot
+                    </button>
+                    {activeButton=="Hot" &&
+                        <button onMouseDown={(e)=>toggleMenu(e, countriesRef)}>
+                            Everywhere
+                            <FiChevronDown/>
+                        </button>
+                    }
+                    <div ref={countriesRef} role="menu">
+                        {countries.map((e)=>{
+                            return (
+                                <button key={e}>
+                                    {e}
+                                </button>
+                            )
+                        })}
+                    </div>
+                </span>
                 <button
                     onClick={() => setActiveButton("New")}
                     style={activeButton == "New" ? style : {}}>
                     <TiStarburstOutline />
                     New
                 </button>
-                <button
-                    onClick={(e) => setActiveButton("Top")}
-                    style={activeButton == "Top" ? style : {}}>
-                    <MdBarChart />
-                    Top
-                </button>
-                {activeButton=="Top" &&
-                    <button onMouseDown={(e)=>toggleMenu(e, topRangeRef)}>
-                        Today
-                        <FiChevronDown/>
-                    </button>
-                }
-                <div ref={topRangeRef} role="menu">
+                <span>
                     <button
-                        onClick={()=>setTopRange("Now")}
-                        style={topRange == "Now" ? style : {}}>
-                        Now
+                        onClick={(e) => setActiveButton("Top")}
+                        style={activeButton == "Top" ? style : {}}>
+                        <MdBarChart />
+                        Top
                     </button>
-                    <button
-                        onClick={()=>setTopRange("Today")}
-                        style={topRange == "Today" ? style : {}}>
-                        Today
-                    </button>
-                    <button
-                        onClick={()=>setTopRange("This Week")}
-                        style={topRange == "This Week" ? style : {}}>
-                        This Week
-                    </button>
-                    <button
-                        onClick={()=>setTopRange("This Month")}
-                        style={topRange == "This Month" ? style : {}}>
-                        This Month
-                    </button>
-                    <button
-                        onClick={()=>setTopRange("This Year")}
-                        style={topRange == "This Year" ? style : {}}>
-                        This Year
-                    </button>
-                    <button
-                        onClick={()=>setTopRange("All Time")}
-                        style={topRange == "All Time" ? style : {}}>
-                        All Time
-                    </button>
-                </div>
+                    {activeButton=="Top" &&
+                        <button onMouseDown={(e)=>toggleMenu(e, topRangeRef)}>
+                            Today
+                            <FiChevronDown/>
+                        </button>
+                    }
+                    <div ref={topRangeRef} role="menu">
+                        <button
+                            onClick={()=>setTopRange("Now")}
+                            style={topRange == "Now" ? style : {}}>
+                            Now
+                        </button>
+                        <button
+                            onClick={()=>setTopRange("Today")}
+                            style={topRange == "Today" ? style : {}}>
+                            Today
+                        </button>
+                        <button
+                            onClick={()=>setTopRange("This Week")}
+                            style={topRange == "This Week" ? style : {}}>
+                            This Week
+                        </button>
+                        <button
+                            onClick={()=>setTopRange("This Month")}
+                            style={topRange == "This Month" ? style : {}}>
+                            This Month
+                        </button>
+                        <button
+                            onClick={()=>setTopRange("This Year")}
+                            style={topRange == "This Year" ? style : {}}>
+                            This Year
+                        </button>
+                        <button
+                            onClick={()=>setTopRange("All Time")}
+                            style={topRange == "All Time" ? style : {}}>
+                            All Time
+                        </button>
+                    </div>
+                </span>
                 <button
                     onClick={(e) => setActiveButton("Rising")}
                     style={activeButton == "Rising" ? style : {}}>

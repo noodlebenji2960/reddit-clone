@@ -33,7 +33,13 @@ import RSlashIcon from "./customIcons/rSlashIcon"
 import TermsAndConditionsIcon from "./customIcons/termsAndConditionsIcon";
 import KarmaIcon from "./customIcons/karmaIcon";
 
+import { getPopular,handleHeaderSearch } from "./redditApi";
+
 const Header = () => {
+    const [pinCode, setPinCode] = useState("");
+    const [searchResults, setSearchResults] = useState();
+    const [feed, setFeed] = useState()
+
     const mainNavDropdownRef = useRef()
     const searchDropdownRef = useRef()
     const coinDropdownRef = useRef()
@@ -92,6 +98,13 @@ const Header = () => {
     useEffect(() => {
         window.addEventListener('mousedown', closeMenu);
     }, [])
+
+    useEffect(() => {
+        const getData = setTimeout(() => {
+            handleHeaderSearch(pinCode, 10).then((e)=>setSearchResults(e))
+        }, 1000)
+        return () => clearTimeout(getData)
+    }, [pinCode])
 
     return (
         <header>
@@ -209,40 +222,56 @@ const Header = () => {
                         onMouseDown={(e) => {
                             toggleMenu(e, searchDropdownRef)
                             document.getElementById("header-search-bar").classList.add("focused")
-                        }}>
+                            getPopular().then((e)=>setSearchResults(e))
+                        }}
+                        onChange={(event) => setPinCode(event.target.value)}>
                     </input>
                     <button>
                         <AiOutlineCloseCircle />
                     </button>
                 </form>
-                <div ref={searchDropdownRef} role="menu">
-                    {/*
-                            SEARCHHISTORY.MAP(()=>{
-                                RETURN <BUTTON>
-                                    <BsSearch/>
-                                    search history item
-                                    <AiOutlineCloseCircle/>
-                                </BUTTON>
-                            })
-                        */}
-                    <div role="heading">Trending Today</div>
-                    {/*
-                            TRENDINGTODAY.MAP(()=>{
-                                RETURN <A>
-                                    <div>
-                                        <BsArrowUpRightCircle/>
-                                        trendingItemTitle
-                                        trendingItemTagline
-                                    </div>
-                                    <div>
-                                        <img src={SUBREDDITCOMMUNITYICON}/>
-                                        r/subredditCommunityName
-                                    </div>
-                                    <img src={TRENDINGITEMATTACHED}/>
-                                </A>
-                            })
-                        */}
-                </div>
+                    <div ref={searchDropdownRef} role="menu">
+                        {searchResults!==undefined ? <>
+                            {"popular" in searchResults && searchResults.popular.length>0 && <>
+                                <div role="heading">Popular</div>
+                                {searchResults.popular.map((e)=>{
+                                    return (
+                                        <button>
+                                            {e.title}
+                                        </button>
+                                    )
+                                })}
+                            </>}
+                            {"communities" in searchResults && searchResults.communities.length>0 && <>
+                                <div role="heading">Communities</div>
+                                {searchResults.communities.map((e)=>{
+                                    if(e.display_name_prefixed.toLowerCase().includes(pinCode.toLowerCase())){
+                                        return (
+                                            <button key={e.id}>
+                                                {e.display_name_prefixed}
+                                                <div role="heading">
+                                                    Community<b>&nbsp;•&nbsp;</b>{e.subscribers>1000 ? Math.floor(e.subscribers/100)* 100/1000+"k" : e.subscribers} members
+                                                </div>
+                                            </button>
+                                        )
+                                    }
+                                })}
+                            </>}
+                            {"people" in searchResults && searchResults.people.length>0 && <>
+                                <div role="heading">People</div>
+                                {searchResults.people.map((e)=>{
+                                    return (
+                                        <button key={e.id}>
+                                            {e.name}
+                                            <div role="heading">
+                                                User<b>&nbsp;•&nbsp;</b>{e.comment_karma>1000 ? Math.floor(e.comment_karma/100)* 100/1000+"k" : e.comment_karma} karma
+                                            </div>
+                                        </button>
+                                    )
+                                })}
+                            </>}
+                        </> : <></>}
+                    </div>
             </div>
             <div>
                 <span>

@@ -9,7 +9,7 @@ import {TbShare3} from "react-icons/tb"
 import {BsThreeDots} from "react-icons/bs"
 import ProfilePictureIcon from "./customIcons/profilePictureIcon";
 
-const FeedPost = () => {
+const FeedPost = (props) => {
     const openMenuRef = useRef()
     const menuEnter = useRef(false)
 
@@ -36,6 +36,24 @@ const FeedPost = () => {
         }
     };
 
+    const timePassed=(timestamp)=>{
+        const milliseconds = timestamp * 1000 
+        const dateObject = new Date(milliseconds)
+        const hours = Math.floor((((Date.now()-dateObject)/1000)/60)/60)
+        if(hours<1){
+            let minutes = Math.floor(((Date.now()-dateObject)/1000)/60)
+            if(minutes<1){
+                return `${Math.floor((Date.now()-dateObject)/1000)} seconds ago`
+            }else{
+                return `${minutes} minutes ago`
+            }
+        }else{
+            return  `${hours} hours ago`
+        }
+    }
+
+    
+
     useEffect(() => {
         window.addEventListener('mousedown', closeMenu);
     }, [])
@@ -44,26 +62,39 @@ const FeedPost = () => {
         <div className="feedPost feedItem">
             <div>
                 <RxThickArrowUp/>
-                1.2k
+                {props.apiData.ups>1000 ? Math.floor(props.apiData.ups/100)* 100/1000+"k" : props.apiData.ups}
                 <RxThickArrowDown/>
             </div>
             <div>
-                <div>
+                <div><span>
                     <ProfilePictureIcon/>
-                    r/reactjs
-                    <i>Posted by u/schubert142</i>
-                    <i>49 minutes ago</i>
+                        {props.apiData.subreddit_name_prefixed}
+                        <i>Posted by u/{props.apiData.author}</i>
+                        <i>{timePassed(props.apiData.created)}</i>
+                    </span>
+                    <button>
+                        Join
+                    </button>
                 </div>
-                <div>
-                    <h1>Title</h1>
-                </div>
-                <div>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet sollicitudin enim. Suspendisse faucibus congue nulla non tincidunt. In non diam tempus, ornare arcu non, faucibus purus. Vivamus urna lorem, imperdiet vel enim at, auctor scelerisque felis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut interdum cursus urna. Vivamus quis consequat lacus. Etiam rhoncus arcu eu finibus euismod. Fusce feugiat euismod magna eget iaculis. Vivamus pretium cursus orci in mollis. Cras vel convallis urna. Quisque faucibus odio ante, et lobortis nisl efficitur vel.
-                </div>
+                <a href={`https://www.reddit.com/${props.apiData.permalink}`}>
+                    <div>
+                        <h1>{props.apiData.title}</h1>
+                    </div>
+                    <div>
+                        {props.apiData.post_hint=="image" && <img style={{width:props.apiData.thumbnail_width+"px", height:props.apiData.thumbnail_height+"px"}} src={props.apiData.thumbnail}/>}
+
+                        {props.apiData.post_hint=="hosted:video" && <video preload="metadata" controls><source src={props.apiData.media.reddit_video.fallback_url+"#t=0.5"}></source></video>}
+                        {props.apiData.post_hint=="rich:video" && <iframe src={props.apiData.media_embed.content.match(/src\="([^\s]*)\s/)[1].slice(0,-1)}/>}
+
+                        {props.apiData.post_hint=="link" && <img src={props.apiData.preview.images[0].url}/>}
+
+                        {props.apiData.post_hint==undefined && props.apiData.selftext!== undefined && <p className="selfText">{props.apiData.selftext}</p>}
+                    </div>
+                </a>
                 <div>
                     <button>
                         <FaRegCommentAlt/>
-                        41 Comments
+                        {props.apiData.num_comments>1000 ? Math.floor(props.apiData.num_comments/100)* 100/1000+"k" : props.apiData.num_comments}
                     </button>
                     <button>
                         <GoGift/>

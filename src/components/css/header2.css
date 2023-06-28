@@ -102,9 +102,25 @@ header label[for="header-search-bar"] svg{
     width: 20px;
 }
 
-#search-container button{
+#search-container > button{
     position: absolute;
     right: 10px;
+}
+
+#search-container div[role="menu"] > button{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 5px 20px;
+}
+
+#search-container div[role="menu"] > div[role="heading"]:not(:first-of-type){
+    border-top: 2px solid var(--newCommunityTheme-bodyTextAlpha20);
+}
+
+#search-container div[role="menu"] > button > div[role="heading"]{
+    padding: 0;
+    text-transform: none;
 }
 
 header div[role="menu"]{
@@ -213,7 +229,7 @@ header div[role="menu"]{
     outline: 1px solid var(--newRedditTheme-line);
 }
 header div[role="menu"] button:has(span) > span{
-pointer-events: none;
+    pointer-events: none;
 }
 
 #userDropdown div[role="menu"] span:not(button span),

@@ -52,23 +52,23 @@
     position: absolute;
     width: min-content;
     height: min-content;
+    min-height: 100px;
+    max-height: 25vh;
     top: 50px;
     white-space: nowrap;
     box-shadow: 2px 5px 10px -8px var(--newCommunityTheme-bodyTextAlpha20);
 }
 
-#feedFilter > span > button:nth-child(5){
+#feedFilter > span > span{
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+}
+
+#feedFilter > span > span > button+button{
     fill: var(--newCommunityTheme-button);
     color: var(--newCommunityTheme-button);
     background-color: var(--newCommunityTheme-field);
-}
-
-#feedFilter span:first-child > div{
-    left: 350px;
-}
-
-#feedFilter span:last-child > div{
-    right: 0px;
 }
 
 #feedFilter div[role="menu"] button{
